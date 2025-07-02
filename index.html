@@ -10,12 +10,69 @@
   <!-- External stylesheet -->
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Override the color for specific elements */
-    .main-banner h2,
-    .main-banner p {
-    color: #333; /* or any color you want */
+    /* Base styling for large screens */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
     }
-    /* Pagination Styles */
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .main-banner {
+      background-color: #f8f8f8;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .main-banner h2 {
+      font-size: 36px;
+    }
+
+    .main-banner p {
+      font-size: 18px;
+    }
+
+    .product-card {
+      display: inline-block;
+      width: 48%;
+      margin: 10px 1%;
+      text-align: center;
+    }
+
+    .product-img {
+      width: 100%;
+      height: auto;
+    }
+
+    .products-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
     .pagination {
       display: flex;
       justify-content: center;
@@ -40,6 +97,51 @@
       color: white;
     }
 
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        display: block;
+        margin-top: 20px;
+      }
+
+      nav a {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .main-banner h2 {
+        font-size: 28px;
+      }
+
+      .main-banner p {
+        font-size: 16px;
+      }
+
+      .product-card {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-banner h2 {
+        font-size: 24px;
+      }
+
+      .main-banner p {
+        font-size: 14px;
+      }
+
+      nav ul {
+        padding: 0;
+      }
+    }
+
     /* Hidden sections */
     .hidden-section {
       display: none;
@@ -56,10 +158,10 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html" onclick="showSection('products')">Products</a></li>
-        <li><a href="index.html" onclick="showSection('about')">About Us</a></li>
-        <li><a href="index.html" onclick="showSection('contact')">Contact</a></li>
+        <li><a href="javascript:void(0);" onclick="showSection('home')">Home</a></li>
+        <li><a href="javascript:void(0);" onclick="showSection('products')">Products</a></li>
+        <li><a href="javascript:void(0);" onclick="showSection('about')">About Us</a></li>
+        <li><a href="javascript:void(0);" onclick="showSection('contact')">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -118,22 +220,75 @@
     function showSection(sectionId) {
       // Hide all sections first
       const sections = document.querySelectorAll('.hidden-section');
-      sections.forEach(function(section) {
+      sections.forEach(function (section) {
         section.style.display = 'none';
       });
 
-      // Show the requested section
+      // If the section exists, show it
       const sectionToShow = document.getElementById(sectionId);
       if (sectionToShow) {
         sectionToShow.style.display = 'block';
+      } else {
+        alert('Home page content can go here');
+        document.querySelector('.main-banner').style.display = 'block';
       }
     }
 
-    // Function to simulate "See More" action to expand the content (optional)
+    // Function to simulate dynamic content loading
     function showMore(sectionId) {
-      const sectionToShow = document.getElementById(sectionId);
-      // Toggle visibility of more content here, or you can load more content dynamically
-      alert('You clicked to see more in ' + sectionId);
+      const section = document.getElementById(sectionId);
+
+      if (sectionId === "products") {
+        // Simulate adding more products dynamically
+        const newProduct1 = document.createElement('div');
+        newProduct1.classList.add('product-card');
+        newProduct1.innerHTML = `
+          <img src="assets/product3.jpg" alt="Product 3" class="product-img">
+          <h4>Product Name 3</h4>
+          <p>$39.99</p>
+          <a href="product3.html" class="view-product-btn">View Product</a>
+        `;
+        
+        const newProduct2 = document.createElement('div');
+        newProduct2.classList.add('product-card');
+        newProduct2.innerHTML = `
+          <img src="assets/product4.jpg" alt="Product 4" class="product-img">
+          <h4>Product Name 4</h4>
+          <p>$59.99</p>
+          <a href="product4.html" class="view-product-btn">View Product</a>
+        `;
+
+        // Append new products to the container
+        const productContainer = section.querySelector('.products-container');
+        productContainer.appendChild(newProduct1);
+        productContainer.appendChild(newProduct2);
+
+        // Optionally, hide the "See More" button after loading new content
+        const seeMoreBtn = section.querySelector('button');
+        seeMoreBtn.style.display = 'none';
+      }
+
+      if (sectionId === "about") {
+        // Add more text to the "About Us" section dynamically
+        const additionalText = document.createElement('p');
+        additionalText.innerHTML = "We are constantly adding new items to our store, so make sure to check back regularly!";
+        section.appendChild(additionalText);
+
+        // Hide the "See More" button after loading extra content
+        const seeMoreBtn = section.querySelector('button');
+        seeMoreBtn.style.display = 'none';
+      }
+
+      if (sectionId === "contact") {
+        // Add more contact details dynamically
+        const moreInfo = document.createElement('p');
+        moreInfo.innerHTML = "You can also reach us via our live chat or call our customer support line at 123-456-7890.";
+        section.appendChild(moreInfo);
+
+        // Hide the "See More" button after loading extra content
+        const seeMoreBtn = section.querySelector('button');
+        seeMoreBtn.style.display = 'none';
+      }
     }
   </script>
 

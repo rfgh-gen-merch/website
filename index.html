@@ -292,19 +292,25 @@
   </footer>
 
   <script>
-    // Toggle visibility of sections
-    function showSection(sectionId) {
-      const sections = document.querySelectorAll('.hidden-section');
-      sections.forEach(function (section) {
-        section.style.display = 'none';
-      });
+  // Function to toggle the visibility of a section
+  function showSection(sectionId) {
+    // Hide all sections first
+    const sections = document.querySelectorAll('.hidden-section');
+    sections.forEach(function (section) {
+      section.style.display = 'none';
+    });
 
-      const sectionToShow = document.getElementById(sectionId);
-      if (sectionToShow) {
-        sectionToShow.style.display = 'block';
-      }
+    // Hide the main banner
+    document.querySelector('.main-banner').style.display = 'none';
+
+    // If the section exists, show it
+    const sectionToShow = document.getElementById(sectionId);
+    if (sectionToShow) {
+      sectionToShow.style.display = 'block';
     }
-  </script>
+  }
+</script>
+
 
 </body>
 

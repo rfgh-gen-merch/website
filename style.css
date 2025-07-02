@@ -6,14 +6,14 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: #f4f6f8; /* Light gray background */
+  color: #2c3e50; /* Darker gray text for modern readability */
 }
 
 header {
-  background-color: #333;
+  background-color: #34495e; /* Dark slate blue color */
   color: white;
   padding: 20px;
   text-align: center;
@@ -23,7 +23,7 @@ header nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
 }
 
 header nav ul li {
@@ -33,70 +33,105 @@ header nav ul li {
 header nav ul li a {
   color: white;
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #f39c12; /* Modern yellow hover effect */
 }
 
 .main-banner {
   background: url('banner.jpg') no-repeat center center/cover;
   text-align: center;
-  padding: 100px 0;
+  padding: 120px 0;
+  background-size: cover;
 }
 
 .main-banner h2 {
-  color: #fff;
+  color: #ecf0f1; /* Soft white text for readability */
   font-size: 3rem;
+  font-weight: bold;
 }
 
 .main-banner p {
-  color: #fff;
+  color: #bdc3c7; /* Light gray text */
   font-size: 1.5rem;
 }
 
 .main-banner .btn {
-  padding: 10px 20px;
-  background-color: #ff5733;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #ff6a00, #ff3f00); /* Vibrant gradient for modern buttons */
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.main-banner .btn:hover {
+  background: linear-gradient(135deg, #ff3f00, #ff6a00);
+  transform: scale(1.05);
 }
 
 .featured-products {
   display: flex;
   justify-content: space-around;
   margin-top: 50px;
+  gap: 30px;
 }
 
 .product-card {
   background-color: #fff;
-  border-radius: 5px;
-  padding: 20px;
+  border-radius: 8px;
+  padding: 25px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Larger shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px); /* Slight hover effect for depth */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
 .product-card img {
   max-width: 100%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .product-card h4 {
-  margin: 10px 0;
-  font-size: 1.2rem;
+  margin: 15px 0;
+  font-size: 1.3rem;
+  color: #2c3e50; /* Dark gray text */
 }
 
 .product-card p {
-  color: #333;
+  color: #16a085; /* Muted teal for price to pop */
   font-size: 1rem;
+  font-weight: bold;
 }
 
 .product-card a {
   text-decoration: none;
-  color: #ff5733;
+  color: #f39c12; /* Modern yellow for links */
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.product-card a:hover {
+  color: #e67e22; /* Slightly darker yellow on hover */
 }
 
 footer {
   text-align: center;
   padding: 20px;
-  background-color: #333;
+  background-color: #34495e; /* Dark slate blue footer */
   color: white;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0;
 }

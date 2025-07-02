@@ -300,8 +300,12 @@
       section.style.display = 'none';
     });
 
-    // Hide the main banner
-    document.querySelector('.main-banner').style.display = 'none';
+    // Show the main banner only if the 'home' section is clicked
+    if (sectionId === 'home') {
+      document.querySelector('.main-banner').style.display = 'block';
+    } else {
+      document.querySelector('.main-banner').style.display = 'none';
+    }
 
     // If the section exists, show it
     const sectionToShow = document.getElementById(sectionId);
@@ -310,6 +314,7 @@
     }
   }
 </script>
+
 
 
 </body>

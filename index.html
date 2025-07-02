@@ -9,6 +9,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- External stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Pagination Styles */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .pagination button {
+      padding: 10px 20px;
+      margin: 0 5px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .pagination button:hover {
+      background-color: #f0f0f0;
+    }
+
+    .pagination .active {
+      background-color: #333;
+      color: white;
+    }
+
+    /* Hidden sections */
+    .hidden-section {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -21,9 +52,9 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" onclick="showSection('products')">Products</a></li>
+        <li><a href="index.html" onclick="showSection('about')">About Us</a></li>
+        <li><a href="index.html" onclick="showSection('contact')">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -33,12 +64,12 @@
     <div class="banner-content">
       <h2>Welcome to Our Online Store!</h2>
       <p>Explore our range of high-quality products!</p>
-      <a href="products.html" class="btn">Browse Products</a>
+      <a href="javascript:void(0);" class="btn" onclick="showSection('products')">Browse Products</a>
     </div>
   </section>
 
-  <!-- Featured Products Section -->
-  <section class="featured-products">
+  <!-- Featured Products Section (Hidden initially) -->
+  <section id="products" class="hidden-section">
     <h3>Featured Products</h3>
     <div class="products-container">
       <div class="product-card">
@@ -54,6 +85,22 @@
         <a href="product2.html" class="view-product-btn">View Product</a>
       </div>
     </div>
+    <button onclick="showMore('products')">See More Products</button>
+  </section>
+
+  <!-- About Us Section (Hidden initially) -->
+  <section id="about" class="hidden-section">
+    <h3>About Us</h3>
+    <p>We are a passionate team offering quality products that make your life better. Our goal is to provide exceptional customer service and unique merchandise that you won't find anywhere else!</p>
+    <button onclick="showMore('about')">See More About Us</button>
+  </section>
+
+  <!-- Contact Section (Hidden initially) -->
+  <section id="contact" class="hidden-section">
+    <h3>Contact Us</h3>
+    <p>If you have any questions or need more information about our products, feel free to reach out!</p>
+    <p>Email us at: <a href="mailto:support@store.com">support@store.com</a></p>
+    <button onclick="showMore('contact')">See More Contact Details</button>
   </section>
 
   <!-- Footer Section -->
@@ -61,7 +108,30 @@
     <p>&copy; 2025 My Merchandise Store. All rights reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Function to toggle the visibility of a section
+    function showSection(sectionId) {
+      // Hide all sections first
+      const sections = document.querySelectorAll('.hidden-section');
+      sections.forEach(function(section) {
+        section.style.display = 'none';
+      });
+
+      // Show the requested section
+      const sectionToShow = document.getElementById(sectionId);
+      if (sectionToShow) {
+        sectionToShow.style.display = 'block';
+      }
+    }
+
+    // Function to simulate "See More" action to expand the content (optional)
+    function showMore(sectionId) {
+      const sectionToShow = document.getElementById(sectionId);
+      // Toggle visibility of more content here, or you can load more content dynamically
+      alert('You clicked to see more in ' + sectionId);
+    }
+  </script>
+
 </body>
 
 </html>
